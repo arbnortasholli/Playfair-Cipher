@@ -76,3 +76,78 @@ class Playfair {
 
     }
 }
+public String formatText() {
+    StringBuilder sb = new StringBuilder();
+    for (char c : plainText.toCharArray()) {
+        if (c == replacedChar) {
+            sb.append((char) (c - 1));
+        } else {
+            sb.append(c);
+        }
+    }
+    for (int i = 0; i < sb.length(); i += 2) {
+        if (i + 1 >= sb.length()) {
+            sb.append('x');
+        } else if (sb.charAt(i) == sb.charAt(i + 1)) {
+            sb.insert(i + 1, 'x');
+        }
+    }
+    return sb.toString();
+}
+
+public int[] findPos(char c) {
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (matrix[i][j] == c) {
+                return new int[] { i, j };
+            }
+        }
+    }
+    throw new IllegalArgumentException("Character not found in matrix: " + c);
+}
+
+
+public String encrypt() {
+    String msg = formatText(), cipher = "";
+    for (int i = 0; i < msg.length(); i += 2) {
+        char a = msg.charAt(i), b = msg.charAt(i + 1);
+        int[] posA = findPos(a), posB = findPos(b);
+
+        if (posA[0] == posB[0]) {
+            cipher += matrix[posA[0]][(posA[1] + 1) % 5];
+            cipher += matrix[posB[0]][(posB[1] + 1) % 5];
+        } else if (posA[1] == posB[1]) {
+            cipher += matrix[(posA[0] + 1) % 5][posA[1]];
+            cipher += matrix[(posB[0] + 1) % 5][posB[1]];
+        } else {
+            cipher += matrix[posA[0]][posB[1]];
+            cipher += matrix[posB[0]][posA[1]];
+        }
+    }
+
+    return cipher;
+}
+
+public String decrypt() {
+    String msg = plainText;
+    String decryptedText = "";
+    for (int i = 0; i < msg.length(); i += 2) {
+        char a = msg.charAt(i), b = msg.charAt(i + 1);
+        int[] posA = findPos(a), posB = findPos(b);
+
+        if (posA[0] == posB[0]) {
+            decryptedText += matrix[posA[0]][(posA[1] + 4) % 5];
+            decryptedText += matrix[posB[0]][(posB[1] + 4) % 5];
+        } else if (posA[1] == posB[1]) {
+            decryptedText += matrix[(posA[0] + 4) % 5][posA[1]];
+            decryptedText += matrix[(posB[0] + 4) % 5][posB[1]];
+        } else {
+            decryptedText += matrix[posA[0]][posB[1]];
+            decryptedText += matrix[posB[0]][posA[1]];
+        }
+    }
+
+    return decryptedText;
+}
+
+}
