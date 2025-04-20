@@ -143,12 +143,15 @@ public class Controller implements Initializable {
         plaintextfx.clear();
         keyfx.clear();
         cipherfx.clear();
+        shkronja.clear();
+        matrixfx.getChildren().clear();
+    }
 
+    public void clearmethod1() {
         plaintextfx1.clear();
         keyfx1.clear();
         cipherfx1.clear();
-
-        matrixfx.getChildren().clear();
+        shkronja1.clear();
         matrixfx1.getChildren().clear();
     }
 
