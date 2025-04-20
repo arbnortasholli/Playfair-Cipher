@@ -191,8 +191,43 @@ public class Controller implements Initializable {
         cipherfx.setText(encText);
     }
 
-    public void dekripto(){
+    public void dekripto() {
+        String plain1;
+        String key1;
+        if (keyfx1.getText().isEmpty()) {
+            key1 = "abc";
+        } else {
+            key1 = keyfx1.getText();
+        }
+        if (plaintextfx1.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gabim");
+            alert.setHeaderText(null);
+            alert.setContentText("Ju lutem shkruani plaintext!");
+            alert.showAndWait();
+            return;
+        } else {
+            plain1 = plaintextfx1.getText();
+        }
+        if (shkronja1.getText().length() > 1) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gabim");
+            alert.setHeaderText(null);
+            alert.setContentText("Ju lutem shkruani vetem nje shkronje te opsioni letter!");
+            alert.showAndWait();
+            return;
+        }
 
+        Playfair play = new Playfair(key1, plain1, shkronja1.getText().charAt(0));
+
+        play.prepareKey();
+        play.generateMatrix();
+        String formattedText = play.formatText();
+        play.setPlainText(formattedText);
+
+        String encText = play.decrypt();
+        showMatrix1(play.getMatrix());
+        cipherfx1.setText(encText);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
