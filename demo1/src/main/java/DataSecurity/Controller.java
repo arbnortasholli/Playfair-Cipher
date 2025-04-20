@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -89,11 +91,6 @@ public class Controller implements Initializable {
         decrypt.setVisible(true);
     }
 
-    public void zgjedhmodin() {
-        hideAllScreens();
-        enkriptoanglisht.setVisible(true);
-    }
-
     public void enkriptoenglish() {
         hideAllScreens();
         enkriptoanglisht.setVisible(true);
@@ -145,6 +142,47 @@ public class Controller implements Initializable {
         cipherfx.clear();
         shkronja.clear();
         matrixfx.getChildren().clear();
+    }
+    public void handleKeyPressedkthehu(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            kthehu();
+        }
+    }
+
+    public void handleKeyPressedclear(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            clearmethod();
+        }
+    }
+
+    public void handleKeyPressedclear1(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            clearmethod1();
+        }
+    }
+
+    public void handleKeyPressedenkriptoenglish(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            enkriptoenglish();
+        }
+    }
+
+    public void handleKeyPresseddekriptoenglish(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            dekriptoenglish();
+        }
+    }
+
+    public void handleKeyPressedencrypt(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            enkripto();
+        }
+    }
+
+    public void handleKeyPresseddecrypt(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            dekripto();
+        }
     }
 
     public void clearmethod1() {
