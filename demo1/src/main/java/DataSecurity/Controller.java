@@ -138,3 +138,31 @@ public class Controller implements Initializable {
             }
         }
     }
+
+    public void clearmethod() {
+        plaintextfx.clear();
+        keyfx.clear();
+        cipherfx.clear();
+
+        plaintextfx1.clear();
+        keyfx1.clear();
+        cipherfx1.clear();
+
+        matrixfx.getChildren().clear();
+        matrixfx1.getChildren().clear();
+    }
+
+    public void enkripto() {
+
+    }
+
+    public void dekripto(){
+
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        modifx.setVisible(true);
+        enkriptoanglisht.setVisible(false);
+        decrypt.setVisible(false);
+    }
+}
