@@ -15,7 +15,7 @@ public class PlayfairCipher extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(PlayfairCipher.class.getResource("Anglisht.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PlayfairCipher.class.getResource("Playfair.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 820, 555);
         stage.setTitle("Playfair Cipher!");
         stage.setScene(scene);
