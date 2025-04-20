@@ -1,11 +1,11 @@
-module com.example.demo1 {
+module com.example.playfaircipher {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.demo1 to javafx.fxml;
+    opens com.example.playfaircipher to javafx.fxml;
     opens DataSecurity to javafx.fxml;
 
     exports DataSecurity;
-    exports com.example.demo1;
+    exports com.example.playfaircipher;
 }
