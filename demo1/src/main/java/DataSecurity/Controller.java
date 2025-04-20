@@ -153,7 +153,42 @@ public class Controller implements Initializable {
     }
 
     public void enkripto() {
+        String plain;
+        String key;
+        if (keyfx.getText().isEmpty()) {
+            key = "abc";
+        } else {
+            key = keyfx.getText();
+        }
+        if (plaintextfx.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gabim");
+            alert.setHeaderText(null);
+            alert.setContentText("Ju lutem shkruani plaintext!");
+            alert.showAndWait();
+            return;
+        } else {
+            plain = plaintextfx.getText();
+        }
+        if (shkronja.getText().length() > 1) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gabim");
+            alert.setHeaderText(null);
+            alert.setContentText("Ju lutem shkruani vetem nje shkronje te opsioni letter!");
+            alert.showAndWait();
+            return;
+        }
 
+        Playfair play = new Playfair(key, plain, shkronja.getText().charAt(0));
+
+        play.prepareKey();
+        play.generateMatrix();
+        String formattedText = play.formatText();
+        play.setPlainText(formattedText);
+
+        String encText = play.encrypt();
+        showMatrix(play.getMatrix());
+        cipherfx.setText(encText);
     }
 
     public void dekripto(){

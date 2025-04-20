@@ -23,7 +23,7 @@ public class PlayfairCipher extends Application {
     }
 }
 
-class Playfair {
+ class Playfair {
     private String key, plainText;
     private final char[][] matrix = new char[5][5];
     private char replacedChar;
@@ -75,7 +75,7 @@ class Playfair {
         }
 
     }
-}
+
 public String formatText() {
     StringBuilder sb = new StringBuilder();
     for (char c : plainText.toCharArray()) {
@@ -149,5 +149,4 @@ public String decrypt() {
 
     return decryptedText;
 }
-
 }
